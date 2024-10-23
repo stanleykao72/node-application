@@ -1,13 +1,13 @@
 FROM node:18-alpine as builder
 ENV NODE_ENV="production"
 
-Copy app's source code to the /app directory
+# Copy app's source code to the /app directory
 COPY . /app
 
-The application's directory will be the working directory
+# The application's directory will be the working directory
 WORKDIR /app
 
-Install Node.js dependencies defined in '/app/package.json'
+# Install Node.js dependencies defined in '/app/package.json'
 RUN npm install
 FROM node:18-alpine
 ENV NODE_ENV="production"
@@ -16,5 +16,5 @@ WORKDIR /app
 ENV PORT 8080
 EXPOSE 8080
 
-Start the application
+# Start the application
 CMD ["npm", "start"]
