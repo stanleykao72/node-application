@@ -7,7 +7,12 @@ agent any
      LOCATION = 'usa'
      CREDENTIALS_ID = 'vultr'
  }
+
  stages {
+    stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
      stage("Checkout code") {
          steps {
              checkout scm
